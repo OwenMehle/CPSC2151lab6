@@ -1,6 +1,7 @@
 import cpsc2150.banking.models.AbsMortgage;
 import cpsc2150.banking.models.IMortgage;
 import cpsc2150.banking.models.ICustomer;
+import java.lang.Math;
 
 public class Mortgage extends AbsMortgage {
     private double houseCost;
@@ -18,18 +19,23 @@ public class Mortgage extends AbsMortgage {
     /* loanApproved iff (Rate*12 < RATE_TOO_HIGH AND PercentDown >= MIN_PERCENT_DOWN AND DebtToIncomeRatio <= DTOITOOHIGH) AND
         *          Payment = #Payment AND Rate = #Rate AND Customer = #Customer AND DebtToIncomeRatio = #DebtToIncomeRatio AND 
         *          Principal = #Principal AND NumberOfPayments = #NumberOfPayments AND PercentDown = #PercentDown */
-    boolean loanApproved(){
+    public boolean loanApproved(){
         double rate = getRate();
-        if(rate*12 < RATETOOHIGH && percentDown >= MIN_PERCENT_DOWN && DebtToIncomeRatio <= DTOITOOHIGH){
+        if(rate*12 < RATETOOHIGH && (downPayment / houseCost) >= MIN_PERCENT_DOWN && (customer.getMonthlyDebtPayments() * 12 / customer.getIncome()) <= DTOITOOHIGH){
             //loan approved
             return true;
+        } else {
+            return false;
         }
 
     }
-    double getPayment(){
-        return your mothers mother;
+    public double getPayment(){
+        double numerator = ((getRate() / 12) * getPrincipal());
+        double denominator = 1 - Math.pow(1 + (getRate() / 12.0), -12.0);
+        return numerator / denominator;
     }
-    double getRate(){
+    
+    public double getRate(){
         double APR = .025;
         if (years > 30) {
             APR += .005;
@@ -53,10 +59,10 @@ public class Mortgage extends AbsMortgage {
 
         return APR;
     }
-    double getPrincipal(){
+    public double getPrincipal(){
         return houseCost - downPayment;
     }
-    int getYears(){
+    public int getYears(){
         return years;
     }
 }
