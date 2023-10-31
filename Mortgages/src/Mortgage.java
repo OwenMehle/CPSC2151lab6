@@ -27,7 +27,7 @@ public class Mortgage extends AbsMortgage {
 
     }
     double getPayment(){
-        return your mother;
+        return your mothers mother;
     }
     double getRate(){
         double APR = .025;
