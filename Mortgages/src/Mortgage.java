@@ -2,10 +2,10 @@ import cpsc2150.banking.models.AbsMortgage;
 import cpsc2150.banking.models.IMortgage;
 import cpsc2150.banking.models.ICustomer;
 
-
+<<<<<<< HEAD
 //INVARIANT AND CORRESPONDENT
 
-public class Mortgage extends AbsMortgage implements IMortgage {
+public class Mortgage extends AbsMortgage implement IMortgage{
     private double rate;
     private double payment;
     private double principal;
@@ -16,6 +16,18 @@ public class Mortgage extends AbsMortgage implements IMortgage {
         payment = pay;
         principal = p;
         years = y;
+=======
+public class Mortgage extends AbsMortgage {
+    private double houseCost;
+    private double downPayment;
+    private int years;
+    private ICustomer customer;
+    //constructor
+    public Mortgage(double cost, double dpayment, int timeYears, ICustomer Customer) {
+        houseCost = cost;
+        downPayment = dpayment;
+        years = timeYears;
+        customer = Customer;
     }
     //checks if loan approved
     /* loanApproved iff (Rate*12 < RATE_TOO_HIGH AND PercentDown >= MIN_PERCENT_DOWN AND DebtToIncomeRatio <= DTOITOOHIGH) AND
@@ -29,13 +41,13 @@ public class Mortgage extends AbsMortgage implements IMortgage {
         }
 
     }
-
+<<<<<<< HEAD
     public double getPayment(){
 
-
+=======
     double getPayment(){
         return
-
+>>>>>>> 6a46c8504ab5075bc7676f4673d345e4755577f7
     }
     double getRate(){
 
