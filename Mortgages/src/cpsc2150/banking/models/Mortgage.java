@@ -1,6 +1,4 @@
-import cpsc2150.banking.models.AbsMortgage;
-import cpsc2150.banking.models.IMortgage;
-import cpsc2150.banking.models.ICustomer;
+package cpsc2150.banking.models;
 import java.lang.Math;
 
 public class Mortgage extends AbsMortgage {
