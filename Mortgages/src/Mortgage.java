@@ -5,14 +5,14 @@ import cpsc2150.banking.models.ICustomer;
 public class Mortgage extends AbsMortgage {
     private double houseCost;
     private double downPayment;
-    private double years;
+    private int years;
     private ICustomer Customer;
     //constructor
-    public Mortgage(double cost, double dpayment, int timeYears, ICustomer Customer) {
+    public Mortgage(double cost, double dpayment, int timeYears, ICustomer customer) {
         houseCost = cost;
         downPayment = dpayment;
         years = timeYears;
-        Customer = new Customer();
+        Customer = customer;
     }
     //checks if loan approved
     /* loanApproved iff (Rate*12 < RATE_TOO_HIGH AND PercentDown >= MIN_PERCENT_DOWN AND DebtToIncomeRatio <= DTOITOOHIGH) AND
@@ -27,7 +27,7 @@ public class Mortgage extends AbsMortgage {
 
     }
     double getPayment(){
-        return
+        return 
     }
     double getRate(){
 
@@ -36,6 +36,6 @@ public class Mortgage extends AbsMortgage {
 
     }
     int getYears(){
-
+        return years;
     }
 }
